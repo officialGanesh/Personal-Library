@@ -18,10 +18,74 @@
 
 </head>
 <body>
-    <div class="container">
-        <h1 id="header"> 📖 Library </h1>
+    <div class="container my-4" style="max-width: 55rem;">
+
+        <!-- !Navbar -->
+        <nav class="navbar navbar-light bg-light my-3">
+            <div class="container-fluid">
+              <a class="navbar-brand" style="border-radius: 20px;"><h1 id="header"> 📖 Library </h1></a>
+              <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+            </div>
+          </nav>
         
+          <!-- !Book-Properties -->
+          <form>
+            <div class="mb-3 my-2">
+              <label for="bookName" class="form-label">Title</label>
+              <input type="text" class="form-control" id="bookName">
+            </div>
+
+            <div class="mb-3">
+              <label for="author" class="form-label">Author</label>
+              <input type="text" class="form-control" id="author">
+            </div>
+
+            <div class="mb-3">
+                <label for="type" class="form-label">Type</label>
+                <input type="text" class="form-control" id="type" placeholder="Ex:Fiction">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add 🔖 </button>
+          </form>    
     </div>
+
+    <div class="container mt-5" id="box" style="max-width: 55rem;">
+        <!-- !Show-Books -->
+        <h2 id="header-2">Your Books</h2>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Type</th>
+              </tr>
+            </thead>
+
+            <tbody id="available-Books">
+              <tr>
+                <th scope="row">1</th>
+                <td>Automate the boring stuff with python</td>
+                <td>Al Sweigart</td> 
+                <td>Programming</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Javascript head first</td>
+                <td>Know-idea</td>
+                <td>Programming</td>
+              </tr>
+              <tr>
+
+            </tbody>
+
+          </table>
+    </div>
+
+
 </body>
 <!-- !Javascript -->
 <script src="/library.js"></script>
