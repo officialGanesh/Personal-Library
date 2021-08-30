@@ -21,14 +21,27 @@ class UI{
                     <td>${book.book}</td>
                     <td>${book.author}</td> 
                     <td>${book.type}</td>
-                    <td><button type="button" class="btn btn-dark px-2 mx-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-                    </svg></button></td>
+                    <td><button type="button" class="btn btn-dark px-2 mx-1 delete">🔴</button></td>
                 `
         row.innerHTML = html;
         booksList.append(row);
-    }
-    
+
+    };
+
+
+
+    static removeUserInputs(title,author,type){
+        title.value="";
+        author.value="";
+        type.value="";
+    };
+
+    static removeBooks(element){
+        if(element.classList.contains("delete")){
+            element.parentElement.parentElement.remove();
+        }
+    };
+
 }
 
 
@@ -37,16 +50,23 @@ form.addEventListener('submit',function(event){
 
     event.preventDefault();
     
-    let title = document.querySelector("#bookName").value;
-    let author = document.querySelector("#author").value;
-    let type = document.querySelector("#type").value;
-    
-    const book = new Books(title,author,type);
+    let title = document.querySelector("#bookName");
+    let author = document.querySelector("#author");
+    let type = document.querySelector("#type");
+
+    const book = new Books(title.value,author.value,type.value);
     // console.log(book);
 
     // Add-books
     UI.addBooksToList(book);
 
+    // Remove-user-inputs
+    UI.removeUserInputs(title,author,type);
+
 });
 
-
+// Delete-books
+let allListedBooks = document.querySelector("#available-Books");
+allListedBooks.addEventListener('click',function(e){
+    UI.removeBooks(e.target);
+});
