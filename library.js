@@ -28,7 +28,18 @@ class UI{
 
     };
 
-
+    static alertNotification(classes,message){
+        let div = document.createElement('div');
+        div.classList = `alert alert-${classes}`;
+        div.setAttribute('role','alert');
+        div.append(document.createTextNode(message));
+        
+        let nav = document.querySelector('.container');
+        let form = document.querySelector('#form');
+        nav.insertBefore(div,form)
+        
+        setTimeout(function(){document.querySelector('.alert').remove()},1500);
+    };
 
     static removeUserInputs(title,author,type){
         title.value="";
@@ -57,11 +68,18 @@ form.addEventListener('submit',function(event){
     const book = new Books(title.value,author.value,type.value);
     // console.log(book);
 
-    // Add-books
-    UI.addBooksToList(book);
+    if(title.value==='' || author.value==='' || type.value === ''){
+        
+        UI.alertNotification('primary',"Fill all the inputs.")
 
-    // Remove-user-inputs
-    UI.removeUserInputs(title,author,type);
+    }else{
+        
+            // Add-books
+            UI.addBooksToList(book);
+            UI.alertNotification('success',"Book Added")
+            // Remove-user-inputs
+            UI.removeUserInputs(title,author,type);
+    };
 
 });
 
@@ -69,4 +87,5 @@ form.addEventListener('submit',function(event){
 let allListedBooks = document.querySelector("#available-Books");
 allListedBooks.addEventListener('click',function(e){
     UI.removeBooks(e.target);
+    UI.alertNotification('danger',"Book Removed.")
 });
