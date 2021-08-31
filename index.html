@@ -24,10 +24,10 @@
         <nav class=" container navbar navbar-light bg-light my-3">
             <div class="container-fluid">
               <a class="navbar-brand" style="border-radius: 20px;"><h1 id="header"> 📖 Library </h1></a>
-              <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-              </form>
+              <div class="d-flex">
+                <input class="form-control me-2" type="text" id="query" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" id="search">Search</button>
+              </div>
             </div>
           </nav>
         
@@ -58,7 +58,6 @@
         <table class="table table-striped">
             <thead>
               <tr>
-                <th scope="col">#</th>
                 <th scope="col">Title</th>
                 <th scope="col">Author</th>
                 <th scope="col">Type</th>
@@ -67,7 +66,7 @@
 
             <tbody id="available-Books">
               <tr>
-                <th scope="row">1</th>
+
                 <td>Automate the boring stuff with python</td>
                 <td>Al Sweigart</td> 
                 <td>Programming</td>
@@ -75,12 +74,12 @@
               </tr>
 
               <tr>
-                <th scope="row">2</th>
+
                 <td>Javascript head first</td>
                 <td>No-idea</td>
                 <td>Programming</td>
                 <td><button type="button" class="btn btn-dark px-2 mx-1 delete">🔴</button></td>
-              <tr>
+              </tr>
 
             </tbody>
           </table>

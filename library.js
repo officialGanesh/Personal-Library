@@ -17,7 +17,6 @@ class UI{
         let html = ""
         let row = document.createElement('tr');
         html += `
-                    <th scope="row">1</th>
                     <td>${book.book}</td>
                     <td>${book.author}</td> 
                     <td>${book.type}</td>
@@ -56,6 +55,7 @@ class UI{
 }
 
 
+
 let form = document.querySelector("#form");
 form.addEventListener('submit',function(event){
 
@@ -89,3 +89,26 @@ allListedBooks.addEventListener('click',function(e){
     UI.removeBooks(e.target);
     UI.alertNotification('danger',"Book Removed.")
 });
+
+
+// Search-books
+
+let query = document.querySelector("#query");
+// console.log(query,searchBtn);
+query.addEventListener('input',function(e){
+    
+    searchQuery = e.target.value.toLowerCase();
+    let books = document.getElementById("available-Books");
+    Array.from(books.getElementsByTagName('tr')).forEach(function(el){
+        if(el.getElementsByTagName('td')[0].innerText.toLowerCase().includes(searchQuery)){
+            el.style.display = "block";
+        }else{el.style.display="none"};
+    });
+});
+
+
+
+
+
+
+
